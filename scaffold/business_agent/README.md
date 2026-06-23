@@ -6,7 +6,7 @@ This folder is the first business scaffold for a personal agent product aimed at
 
 The product is a local-first Windows desktop agent with a cloud control plane.
 
-Users install the app, sign in, choose their profession pack, and run repeatable office workflows such as document summaries, missing-item checks, deadline checklists, and client reply drafts. The app is not positioned as a generic chatbot or developer tool. It is positioned as a practical assistant for reducing repetitive professional office work.
+Users install the app, sign in, choose their profession pack, and run repeatable office workflows such as document summaries, missing-item checks, deadline checklists, and client reply drafts. The vertical packs live under `packs/` in the main repo, while the app/runtime stays in the product repo. The app is not positioned as a generic chatbot or developer tool. It is positioned as a practical assistant for reducing repetitive professional office work.
 
 ## Initial Verticals
 

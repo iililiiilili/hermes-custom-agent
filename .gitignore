@@ -23,6 +23,11 @@ venv/
 **/build/
 **/coverage/
 
+# Local project exports / generated scaffolds that live in sibling repos
+scaffold/flutter_app/
+scaffold/supabase/
+**/.codex_gradle_home/
+
 # Tool caches
 .hermes/
 .codex/
