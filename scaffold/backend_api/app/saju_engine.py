@@ -282,6 +282,44 @@ def _ten_god(day_stem: str, other_stem: str) -> str:
     return "정인"
 
 
+def _daily_fortune_score(
+    *,
+    user_day_stem: str,
+    user_day_element: str,
+    user_month_branch: str,
+    today_day_stem: str,
+    today_day_element: str,
+    today_month_branch: str,
+    time_known: bool,
+) -> int:
+    generates = {"wood": "fire", "fire": "earth", "earth": "metal", "metal": "water", "water": "wood"}
+    controls = {"wood": "earth", "fire": "metal", "earth": "water", "metal": "wood", "water": "fire"}
+    weekday_bias = [0, 1, 2, 1, 0, -1, -2][date.today().weekday()]
+
+    score = 50 + weekday_bias
+    if user_day_element == today_day_element:
+        score += 12
+    elif generates[user_day_element] == today_day_element:
+        score += 8
+    elif generates[today_day_element] == user_day_element:
+        score += 5
+    elif controls[user_day_element] == today_day_element:
+        score -= 8
+    elif controls[today_day_element] == user_day_element:
+        score -= 6
+
+    if user_month_branch == today_month_branch:
+        score += 6
+    if _is_yang(user_day_stem) == _is_yang(today_day_stem):
+        score += 2
+    if time_known:
+        score += 2
+    else:
+        score -= 2
+
+    return max(1, min(100, score))
+
+
 def _name_rhythm(name: str) -> tuple[int, str]:
     compact = "".join(ch for ch in name if not ch.isspace())
     length = len(compact)
@@ -297,12 +335,12 @@ def _score_from_elements(elements: dict[str, int], day_element: str, time_known:
     min_value = min(elements.values())
     spread = max_value - min_value
     avg = sum(elements.values()) / len(elements)
-    balance = 96 - int(spread * 1.25) - int(abs(max_value - avg) * 0.7)
-    balance += DAY_STEM_ELEMENT_BONUS.get(day_element, 0)
+    balance = 58 - int(spread * 0.45) - int(abs(max_value - avg) * 0.2)
+    balance += DAY_STEM_ELEMENT_BONUS.get(day_element, 0) // 3
     if time_known:
-        balance += 3
+        balance += 2
     else:
-        balance -= 4
+        balance -= 3
     return max(1, min(100, balance))
 
 
@@ -396,17 +434,41 @@ def build_saju_preview(
     day_stem = day_pillar[0]
     month_branch = month_pillar[1]
 
-    pillars_for_balance = [
+    today = date.today()
+    today_saju = calculate_saju(
+        today.year,
+        today.month,
+        today.day,
+        12,
+        0,
+        utc_offset=9,
+        use_solar_time=False,
+        early_zi_time=True,
+    )
+    today_day_pillar = _to_korean_pillar(str(today_saju["day_pillar"]))
+    today_month_pillar = _to_korean_pillar(str(today_saju["month_pillar"]))
+    today_day_stem = today_day_pillar[0]
+    today_day_element = STEM_ELEMENT.get(today_day_stem, "earth")
+    today_month_branch = today_month_pillar[1]
+    day_element = STEM_ELEMENT.get(day_stem, "earth")
+    element_weights = _weighted_element_counts([
         (year_pillar, 0.9),
         (month_pillar, 1.1),
         (day_pillar, 1.6),
         (hour_pillar, 0.9 if time_known else 0.0),
-    ]
-    element_weights = _weighted_element_counts(pillars_for_balance)
+    ])
     normalized_elements = _normalize_counts(element_weights)
     dominant_element = max(normalized_elements, key=normalized_elements.get)
-    day_element = STEM_ELEMENT.get(day_stem, "earth")
-    overall_score = _score_from_elements(normalized_elements, day_element, time_known)
+
+    overall_score = _daily_fortune_score(
+        user_day_stem=day_stem,
+        user_day_element=day_element,
+        user_month_branch=month_branch,
+        today_day_stem=today_day_stem,
+        today_day_element=today_day_element,
+        today_month_branch=today_month_branch,
+        time_known=time_known,
+    )
     mood = _determine_mood(overall_score)
 
     ten_god_counts: dict[str, int] = {key: 0 for key in TEN_GOD_LABELS}

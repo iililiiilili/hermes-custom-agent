@@ -135,12 +135,18 @@ def unlock_card(payload: UnlockRequest) -> UnlockResponse:
 
 @app.get("/v1/fortune/daily", response_model=DailyFortuneResponse)
 def daily_fortune(profile_id: str, anonymous_user_id: str) -> DailyFortuneResponse:
+    today = date.today()
+    weekday_bias = [0, 1, 2, 1, 0, -1, -2][today.weekday()]
+    day_seed = (today.year % 17) + today.month * 2 + today.day % 11
+    base_score = max(1, min(100, 48 + weekday_bias + (day_seed % 9) - 4))
+    love_score = max(1, min(100, base_score + 3))
+    money_score = max(1, min(100, base_score - 1))
     return DailyFortuneResponse(
-        date=date.today(),
-        mascot_mood="steady",
-        headline="Local daily preview",
-        body="A lightweight local-first daily fortune stub.",
-        scores={"love": 50, "money": 50},
+        date=today,
+        mascot_mood="steady" if base_score < 70 else "lucky",
+        headline="오늘 운세",
+        body="오늘 날짜 흐름을 기준으로 만든 일일 점수예요.",
+        scores={"love": love_score, "money": money_score},
     )
 
 
