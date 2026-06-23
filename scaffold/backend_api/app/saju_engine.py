@@ -115,6 +115,60 @@ ELEMENT_LABELS = {
     "water": "수",
 }
 
+STEM_YIN_YANG = {
+    "갑": "yang",
+    "을": "yin",
+    "병": "yang",
+    "정": "yin",
+    "무": "yang",
+    "기": "yin",
+    "경": "yang",
+    "신": "yin",
+    "임": "yang",
+    "계": "yin",
+}
+
+DAY_MASTER_PROFILES = {
+    "갑": {"label": "큰 나무형", "love": "기준이 분명하고, 상대의 태도가 흔들리면 바로 느껴지는 타입이에요.", "money": "한 번에 크게 보기보다 장기적으로 쌓는 감각이 좋아요.", "career": "정리, 기획, 책임감이 필요한 역할에서 힘이 나요.", "caution": "고집이 세지면 주변 조언을 놓치기 쉬워요.", "tip": "오늘은 일단 방향을 정하고 나서 디테일을 잡는 게 좋아요."},
+    "을": {"label": "덩굴풀형", "love": "분위기와 말의 온도가 잘 맞아야 마음이 열려요.", "money": "부드럽지만 꾸준한 관리가 재물운을 살려요.", "career": "조율, 상담, 미감, 커뮤니케이션이 강점이에요.", "caution": "주변 기류에 너무 오래 흔들리면 피곤해져요.", "tip": "오늘은 한 사람에게 집중해서 말하는 게 유리해요."},
+    "병": {"label": "태양형", "love": "호감 표현이 빠르고, 반응이 오면 바로 살아나요.", "money": "보이는 성과가 있을 때 집중력이 높아져요.", "career": "발표, 리딩, 노출, 추진이 있는 일이 잘 맞아요.", "caution": "속도가 과하면 주변이 따라오지 못할 수 있어요.", "tip": "오늘은 먼저 분위기를 밝히는 쪽이 이득이에요."},
+    "정": {"label": "촛불형", "love": "섬세한 배려가 빛나는 타입이라 작은 말이 크게 남아요.", "money": "정리된 루틴과 예산이 운을 안정적으로 받쳐줘요.", "career": "서비스, 기록, 감각, 디테일이 필요한 분야에 강해요.", "caution": "감정이 쌓이면 속으로 끓고 겉으로는 드러내지 않기 쉬워요.", "tip": "오늘은 느슨한 약속보다 선명한 일정이 좋아요."},
+    "무": {"label": "산형", "love": "쉽게 흔들리지 않지만, 한 번 마음 열면 오래 가요.", "money": "버티는 힘이 좋아서 고정 수입 관리에 강점이 있어요.", "career": "기반, 운영, 책임, 조직 관리에서 존재감이 커져요.", "caution": "너무 버티기만 하면 변화 타이밍을 놓칠 수 있어요.", "tip": "오늘은 이미 하던 것의 기반을 한 번 더 다져보세요."},
+    "기": {"label": "밭형", "love": "상대의 편안함을 먼저 살피는 다정한 타입이에요.", "money": "자잘한 지출 정리와 흐름 관리에서 강해요.", "career": "지원, 운영, 문서, 실무 정리에서 장점이 살아나요.", "caution": "챙길 것이 많아지면 내 페이스를 잃기 쉬워요.", "tip": "오늘은 작은 누락부터 잡으면 전체가 편해져요."},
+    "경": {"label": "칼형", "love": "호불호가 분명하고, 선이 맞을 때 관계가 단단해져요.", "money": "판단이 빠르고 손익이 보이면 과감해질 수 있어요.", "career": "결단, 구조화, 룰 설정, 실행에서 힘이 나요.", "caution": "말이 직선적으로 나가면 오해를 살 수 있어요.", "tip": "오늘은 한 번 자르고, 한 번 더 다듬어 말하세요."},
+    "신": {"label": "보석형", "love": "예민하지만 세련된 감각이 통하면 매력적으로 보여요.", "money": "작은 차이와 품질 구분에 강해서 선별력이 좋아요.", "career": "편집, 검토, 감정, 정밀함이 필요한 일에 적합해요.", "caution": "기준이 높아지면 스스로도 피곤해질 수 있어요.", "tip": "오늘은 작은 퀄리티 체크가 큰 차이를 만들어요."},
+    "임": {"label": "큰물형", "love": "흐름을 읽는 감각이 좋아서 공감이 빠르게 이어져요.", "money": "판단보다 흐름을 넓게 보는 쪽이 유리해요.", "career": "확장, 연결, 이동, 정보 수집에서 강점이 있어요.", "caution": "생각이 많아지면 실행이 늦어질 수 있어요.", "tip": "오늘은 일단 시작하고 보면서 조정하는 게 좋아요."},
+    "계": {"label": "비형", "love": "감정의 결이 섬세해서 사소한 분위기도 잘 읽어요.", "money": "숫자보다 맥락을 읽는 감각이 좋아요.", "career": "관찰, 분석, 후방 지원, 정리에서 장점이 있어요.", "caution": "조용히 쌓인 피로가 한꺼번에 올라올 수 있어요.", "tip": "오늘은 깊게 보기보다 가볍게 정리하는 게 맞아요."},
+}
+
+BRANCH_TRAITS = {
+    "자": {"season": "겨울", "tone": "집중", "keyword": "시작 전의 준비"},
+    "축": {"season": "겨울 끝", "tone": "축적", "keyword": "버티며 쌓기"},
+    "인": {"season": "초봄", "tone": "기동", "keyword": "움직임의 시작"},
+    "묘": {"season": "봄", "tone": "확장", "keyword": "퍼지는 기운"},
+    "진": {"season": "봄 끝", "tone": "정리", "keyword": "방향 전환"},
+    "사": {"season": "초여름", "tone": "집중", "keyword": "관심이 모이는 때"},
+    "오": {"season": "여름", "tone": "발산", "keyword": "드러내기"},
+    "미": {"season": "여름 끝", "tone": "완충", "keyword": "정리와 배려"},
+    "신": {"season": "초가을", "tone": "선별", "keyword": "고르는 힘"},
+    "유": {"season": "가을", "tone": "정리", "keyword": "마무리와 다듬기"},
+    "술": {"season": "가을 끝", "tone": "보호", "keyword": "경계 세우기"},
+    "해": {"season": "겨울 초입", "tone": "확장", "keyword": "흐름을 넓히기"},
+}
+
+TEN_GOD_LABELS = {
+    "비견": "동료·자기주장",
+    "겁재": "경쟁·돌파",
+    "식신": "생산·표현",
+    "상관": "재능·변화",
+    "편재": "기회·확장",
+    "정재": "관리·안정",
+    "편관": "압박·규율",
+    "정관": "책임·신뢰",
+    "편인": "직감·보호",
+    "정인": "학습·회복",
+}
+
 DAY_STEM_ELEMENT_BONUS = {
     "wood": 4,
     "fire": 5,
@@ -197,6 +251,47 @@ def _determine_mood(score: int) -> MascotMood:
     return "rough"
 
 
+def _is_yang(stem: str) -> bool:
+    return STEM_YIN_YANG.get(stem, "yang") == "yang"
+
+
+def _ten_god(day_stem: str, other_stem: str) -> str:
+    day_element = STEM_ELEMENT.get(day_stem)
+    other_element = STEM_ELEMENT.get(other_stem)
+    if not day_element or not other_element:
+        return "정인"
+
+    day_yang = _is_yang(day_stem)
+    other_yang = _is_yang(other_stem)
+    same_polarity = day_yang == other_yang
+
+    if day_element == other_element:
+        return "비견" if same_polarity else "겁재"
+
+    generates = {"wood": "fire", "fire": "earth", "earth": "metal", "metal": "water", "water": "wood"}
+    controls = {"wood": "earth", "fire": "metal", "earth": "water", "metal": "wood", "water": "fire"}
+
+    if generates[day_element] == other_element:
+        return "식신" if same_polarity else "상관"
+    if controls[day_element] == other_element:
+        return "편재" if same_polarity else "정재"
+    if controls[other_element] == day_element:
+        return "편관" if same_polarity else "정관"
+    if generates[other_element] == day_element:
+        return "편인" if same_polarity else "정인"
+    return "정인"
+
+
+def _name_rhythm(name: str) -> tuple[int, str]:
+    compact = "".join(ch for ch in name if not ch.isspace())
+    length = len(compact)
+    if length <= 2:
+        return length, "짧고 선명한 이름"
+    if length == 3:
+        return length, "리듬이 자연스러운 이름"
+    return length, "조금 길지만 안정감 있는 이름"
+
+
 def _score_from_elements(elements: dict[str, int], day_element: str, time_known: bool) -> int:
     max_value = max(elements.values())
     min_value = min(elements.values())
@@ -211,43 +306,59 @@ def _score_from_elements(elements: dict[str, int], day_element: str, time_known:
     return max(1, min(100, balance))
 
 
-def _build_texts(score: int, dominant_element: str, day_pillar: str, time_known: bool, name: str) -> tuple[str, str, list[str], str, str]:
-    element_label = ELEMENT_LABELS[dominant_element]
+def _build_texts(
+    score: int,
+    dominant_element: str,
+    day_pillar: str,
+    time_known: bool,
+    name: str,
+    day_stem: str,
+    month_branch: str,
+    dominant_ten_god: str,
+) -> tuple[str, str, list[str], str, str]:
+    day_profile = DAY_MASTER_PROFILES.get(day_stem, DAY_MASTER_PROFILES["갑"])
+    branch_trait = BRANCH_TRAITS.get(month_branch, BRANCH_TRAITS["자"])
+    ten_god_label = TEN_GOD_LABELS.get(dominant_ten_god, dominant_ten_god)
     prefix = f"{name}님, " if name else ""
     if score >= 74:
-        title = f"{prefix}{element_label} 기운이 크게 트이는 대길형"
-        summary = f"{prefix}{day_pillar}의 결이 선명해요. 오늘은 시작과 응답이 빨라서, 먼저 움직인 쪽이 이득을 봐요."
+        title = f"{prefix}{day_pillar} · {day_profile['label']} 대길형"
+        summary = f"{prefix}{day_pillar}의 결이 선명해요. {branch_trait['season']} 기운과 맞물려 반응이 빠르고, 먼저 움직인 쪽이 이득을 봐요."
         details = [
-            "바로 결정한 일보다, 먼저 말문을 열어보는 쪽이 유리해요.",
-            f"{element_label} 기운이 살아 있어 감각적인 선택이 잘 맞아요.",
-            "작은 시도가 예상보다 큰 반응으로 돌아올 수 있어요.",
+            f"{day_profile['career']}",
+            f"십신 축에서는 {dominant_ten_god} 기운이 두드러져 {ten_god_label} 흐름이 보여요.",
+            f"{branch_trait['keyword']} 성향이 살아 있어 {branch_trait['tone']} 감각이 잘 맞아요.",
+            f"{day_profile['tip']}",
         ]
-        caution = "기세가 좋아도 말은 한 번만 더 다듬어서 보내요."
-        lucky_tip = "오늘의 행운 포인트: 먼저 연락하기"
+        caution = f"기세가 좋아도 {day_profile['caution']}"
+        lucky_tip = f"오늘의 행운 포인트: {branch_trait['tone']}을 살리는 행동"
     elif score >= 50:
-        title = f"{prefix}{element_label} 기운이 안정적으로 받쳐주는 날"
+        title = f"{prefix}{day_pillar} · {day_profile['label']} 안정형"
         summary = f"{prefix}{day_pillar}를 중심으로 흐름이 고르게 잡혀 있어요. 서두르기보다 정리해두면 더 편해져요."
         details = [
-            "기본 루틴을 지키면 전체 흐름이 안정돼요.",
-            "중요한 말은 짧고 분명하게 전하는 게 좋아요.",
-            "지출이나 일정은 한 번 더 체크하면 손해가 줄어요.",
+            f"{day_profile['love']}",
+            f"{day_profile['money']}",
+            f"{branch_trait['tone']}한 월지 흐름이라 {branch_trait['keyword']}이 중요해요.",
+            f"{day_profile['tip']}",
         ]
-        caution = "루틴이 흔들리면 운도 같이 흔들릴 수 있어요."
-        lucky_tip = "오늘의 행운 포인트: 중간 점검"
+        caution = f"루틴이 흔들리면 운도 같이 흔들릴 수 있어요. {day_profile['caution']}"
+        lucky_tip = f"오늘의 행운 포인트: {branch_trait['keyword']} 점검"
     else:
-        title = f"{prefix}{element_label} 기운이 부족해서 조절이 필요한 날"
+        title = f"{prefix}{day_pillar} · {day_profile['label']} 조절형"
         summary = f"{prefix}{day_pillar}가 예민하게 작동해요. 무리하기보다 속도를 낮추면 훨씬 편해져요."
         details = [
-            "급하게 결론 내리기보다 한 박자 쉬어가는 게 좋아요.",
-            "피곤하면 일정 하나는 미뤄도 괜찮아요.",
-            "오늘은 완벽보다 무난이 복이에요.",
+            f"{day_profile['love']}",
+            f"{day_profile['money']}",
+            f"{day_profile['career']}",
+            f"{day_profile['tip']}",
         ]
-        caution = "무리수, 즉흥 결제, 과한 약속은 피하는 게 좋아요."
-        lucky_tip = "오늘의 행운 포인트: 속도 낮추기"
+        caution = f"무리수, 즉흥 결제, 과한 약속은 피하는 게 좋아요. {day_profile['caution']}"
+        lucky_tip = f"오늘의 행운 포인트: {branch_trait['tone']}으로 정리하기"
 
     if not time_known:
         details.append("시간 미상이라 시주는 생략하고, 년·월·일주 중심으로 봤어요.")
     details.insert(0, f"{name}님의 이름과 생년월일 흐름을 함께 묶어 읽었어요.")
+    details.insert(1, f"이름 호흡은 '{name}' 기준 {_name_rhythm(name)[0]}글자라 {_name_rhythm(name)[1]}로 보여요.")
+    details.insert(2, f"{day_pillar} 일간은 {day_profile['label']}로 읽혀서, 관계/일/돈의 반응 속도가 함께 달라져요.")
 
     return title, summary, details, caution, lucky_tip
 
@@ -282,6 +393,8 @@ def build_saju_preview(
     day_pillar = _to_korean_pillar(str(saju["day_pillar"]))
     hour_pillar_raw = str(saju["hour_pillar"]) if time_known else None
     hour_pillar = _to_korean_pillar(hour_pillar_raw) if hour_pillar_raw else None
+    day_stem = day_pillar[0]
+    month_branch = month_pillar[1]
 
     pillars_for_balance = [
         (year_pillar, 0.9),
@@ -292,12 +405,18 @@ def build_saju_preview(
     element_weights = _weighted_element_counts(pillars_for_balance)
     normalized_elements = _normalize_counts(element_weights)
     dominant_element = max(normalized_elements, key=normalized_elements.get)
-    day_element = STEM_ELEMENT.get(day_pillar[0], "earth")
+    day_element = STEM_ELEMENT.get(day_stem, "earth")
     overall_score = _score_from_elements(normalized_elements, day_element, time_known)
     mood = _determine_mood(overall_score)
 
+    ten_god_counts: dict[str, int] = {key: 0 for key in TEN_GOD_LABELS}
+    for stem in [str(saju["year_stem"]), str(saju["month_stem"]), str(saju["hour_stem"]) if time_known else None]:
+        if stem:
+            ten_god_counts[_ten_god(day_stem, stem)] += 1
+    dominant_ten_god = max(ten_god_counts, key=ten_god_counts.get)
+
     title, summary_body, details, caution, lucky_tip = _build_texts(
-        overall_score, dominant_element, day_pillar, time_known, name
+        overall_score, dominant_element, day_pillar, time_known, name, day_stem, month_branch, dominant_ten_god
     )
 
     chart_parts = [year_pillar, month_pillar, day_pillar]
@@ -312,18 +431,19 @@ def build_saju_preview(
     love_score = max(1, min(100, overall_score + (5 if dominant_element in {"wood", "fire"} else -2)))
     money_score = max(1, min(100, overall_score + (5 if dominant_element in {"earth", "metal"} else -2)))
 
+    day_profile = DAY_MASTER_PROFILES.get(day_stem, DAY_MASTER_PROFILES["갑"])
     free_cards = [
         {
             "card_key": "love_preview",
             "title": "연애운",
             "score": love_score,
-            "body": "대화 리듬이 잘 맞으면 호감이 더 빨리 살아나요.",
+            "body": day_profile["love"],
         },
         {
             "card_key": "money_preview",
             "title": "금전운",
             "score": money_score,
-            "body": "작은 지출을 한 번 더 보면 마음이 편해져요.",
+            "body": day_profile["money"],
         },
     ]
 
